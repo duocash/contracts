@@ -136,7 +136,7 @@ contract LockerFactory is NFT{
         ));
 
         // Initialize the cloned proxy
-        locker.initialize(
+        locker.proxyInitialize(
             lockerSingleton,
             address(proxyAdmin),
             new bytes(0)

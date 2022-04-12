@@ -13,11 +13,10 @@ pragma solidity ^0.8.12;
 //       `=':-..-'`
 //    https://duo.cash
 
+import "./ProxyInitializable.sol";
 import "@openzeppelin/contracts/proxy/transparent/TransparentUpgradeableProxy.sol";
-import "@openzeppelin/contracts/proxy/utils/Initializable.sol";
 
-
-contract LockerProxy is TransparentUpgradeableProxy, Initializable{
+contract LockerProxy is TransparentUpgradeableProxy, ProxyInitializable{
 
     // Used for the singleton 
     constructor(
@@ -27,7 +26,7 @@ contract LockerProxy is TransparentUpgradeableProxy, Initializable{
     ) TransparentUpgradeableProxy (_logic, _admin, _data) initializer {}
 
     // Used for the clones
-    function initialize(
+    function proxyInitialize(
         address _logic,
         address admin_,
         bytes memory _data
